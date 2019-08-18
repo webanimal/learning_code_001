@@ -1,5 +1,6 @@
 import com.sun.istack.internal.NotNull;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 // https://habr.com/ru/post/440436/#11  - вопросы & ответы
@@ -13,13 +14,44 @@ public class Main {
 //        selectionSort();
 //        bubbleSort();
 //        shakenNotStirred();
-        removeAllEntriesOf(9);
+//        removeAllEntriesOf(9);
+        testMySimpleLinkedList();
     }
 
 
     // =================================================================================================================
     // Learning code lab
     // =================================================================================================================
+
+    private static void testMySimpleLinkedList() {
+        MySimpleLinkedList<String> mySimpleLinkedList = new MySimpleLinkedList<>();
+        mySimpleLinkedList.add("one");
+        mySimpleLinkedList.add("two");
+        mySimpleLinkedList.add("three");
+        mySimpleLinkedList.add("four");
+        System.out.println(mySimpleLinkedList.toString());
+
+        System.out.println("first: " + mySimpleLinkedList.getFirst().toString());
+        System.out.println("last: " + mySimpleLinkedList.getLast().toString());
+
+        mySimpleLinkedList.removeEntry("three");
+        System.out.println(mySimpleLinkedList.toString());
+
+        mySimpleLinkedList.removeEntry(1);
+        System.out.println(mySimpleLinkedList.toString());
+
+        mySimpleLinkedList.removeEntry("zzz");
+        System.out.println(mySimpleLinkedList.toString());
+
+        try {
+            mySimpleLinkedList.removeEntry(3);
+
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+            System.out.println("An error has occurred!");
+        }
+        System.out.println(mySimpleLinkedList.toString());
+    }
 
     /**
      * Removing a defined value from an Array and trim size of the Array.
@@ -29,7 +61,6 @@ public class Main {
         int length = 10000;
         int[] numbers = getIntArrayOfLength(length);
         printArrayWithText("array before: ", numbers);
-
         int offset = 0;
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < length; i++) {
@@ -194,12 +225,12 @@ public class Main {
     private static int[] getIntArrayOfLength(final int length) {
         int[] array = new int[length];
         for (int i = 0; i < length; i++) {
-            array[i] = getRandom1To100();
+            array[i] = getRandomIntFrom1To100();
         }
         return array;
     }
 
-    private static int getRandom1To100() {
+    private static int getRandomIntFrom1To100() {
         return (int) (Math.random() * 100) + 1;
     }
 
