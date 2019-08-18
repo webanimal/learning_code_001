@@ -2,7 +2,7 @@ import com.sun.istack.internal.NotNull;
 
 import java.util.Arrays;
 
-// https://habr.com/ru/post/440436/#11  - вопросы - ответы
+// https://habr.com/ru/post/440436/#11  - вопросы & ответы
 // https://habr.com/ru/post/422085/     - сортировка выбором
 // https://habr.com/ru/post/204600/     - сортировка пузырьком
 // https://habr.com/ru/post/415935/     - сортировка вставкой
@@ -89,7 +89,7 @@ public class Main {
     }
 
     /**
-     * Sorting by "bubble" algorithm
+     * Sorting by "shake" algorithm (2-way bubbles)
      */
     private static void shakenNotStirred() {
         int length = 10000;
@@ -156,7 +156,7 @@ public class Main {
 
 
     // =================================================================================================================
-    // Utills
+    // Utility
     // =================================================================================================================
 
     private static int[] getIntArrayOfLength(final int length) {
