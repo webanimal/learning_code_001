@@ -10,15 +10,47 @@ public class Main {
 
     public static void main(String[] args) {
 //        minMax();
-        selectionSort();
-        bubbleSort();
-        shakenNotStirred();
+//        selectionSort();
+//        bubbleSort();
+//        shakenNotStirred();
+        removeAllEntriesOf(9);
     }
 
 
     // =================================================================================================================
     // Learning code lab
     // =================================================================================================================
+
+    /**
+     * Removing a defined value from an Array and trim size of the Array.
+     * @param entry a value to remove from the Array.
+     */
+    private static void removeAllEntriesOf(final int entry) {
+        int length = 10000;
+        int[] numbers = getIntArrayOfLength(length);
+        printArrayWithText("array before: ", numbers);
+
+        int offset = 0;
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i < length; i++) {
+            if (entry == numbers[i]) {
+                offset++;
+
+            } else {
+                numbers[i - offset] = numbers[i];
+            }
+        }
+        long delta = System.currentTimeMillis() - startTime;
+
+        int[] result = Arrays.copyOf(numbers, length - offset);
+        printArrayWithText("array _after: ", result);
+        System.out.println("swaps: " + offset
+                + ", entryToRemove: " + entry
+                + ", len before: " + length
+                + ", after: " + result.length
+        );
+        System.out.println("time, ms: " + delta);
+    }
 
     /**
      * Sorting by "simple selection" algorithm
